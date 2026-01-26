@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTETIO | The Quiet Force Behind Clinic Growth</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- BRAND FONTS: Libre Bodoni & Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Bodoni:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    
+    <style>
+        :root {
+            /* COLOR VARIABLES */
+            --text-main: #F5F1EE;   /* Warm off-white */
+            --text-dark: #1F2A44;   /* Deep Navy */
+            --accent: #ca8a04;      /* Gold accent */
+            
+            --border-light: rgba(245, 241, 238, 0.08); 
+            --glass-bg: rgba(255, 255, 255, 0.015); 
+            
+            /* FONT FAMILY */
+            --font-head: 'Libre Bodoni', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: #030712; 
+            min-height: 100vh;
+            color: var(--text-main);
+            font-family: var(--font-body);
+            overflow-x: hidden;
+            line-height: 1.7;
+            font-weight: 300;
+            position: relative;
+        }
+
+        /* MOBILE BACKGROUND FIX */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            background-color: #030712; 
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(13, 57, 104, 0.65) 0%, transparent 65%),
+                radial-gradient(circle at 100% 100%, rgba(29, 88, 141, 0.55) 0%, transparent 75%),
+                radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+            background-size: cover;
+            background-position: center;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 { 
+            font-family: var(--font-head); 
+            font-weight: 400; 
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+        
+        p { color: rgba(245, 241, 238, 0.75); font-size: 0.95rem; line-height: 1.8; }
+
+        .mono-label {
+            font-family: var(--font-body);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            color: var(--text-main);
+            display: block;
+            margin-bottom: 20px;
+            opacity: 0.5;
+            border-left: 1px solid var(--accent);
+            padding-left: 12px;
+        }
+
+        /* LAYOUT */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+        .section { padding: 120px 0; border-bottom: 1px solid var(--border-light); }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+        
+        /* IMAGES & PLACEHOLDERS GENERAL STYLE */
+        .img-cover { width: 100%; height: 100%; object-fit: cover; display: block; }
+        
+        .img-placeholder {
+            background-color: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-light);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            overflow: hidden; position: relative;
+            transition: 0.5s;
+        }
+        
+        .img-placeholder img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: grayscale(100%); opacity: 0.7; transition: 0.5s;
+        }
+        
+        .founder-card:hover .img-placeholder img {
+            filter: grayscale(0%); opacity: 1; transform: scale(1.02);
+        }
+
+        /* HERO ASSETS STYLING */
+        .hero-bg-img {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; z-index: 0; opacity: 0.4;
+        }
+        
+        .hero-butterfly-corner {
+            position: absolute; top: 10%; right: 5%; width: 120px; height: auto;
+            z-index: 10; opacity: 0.8;
+        }
+        
+        .hero-visual-center {
+            position: relative; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            min-height: 400px; margin-bottom: 30px;
+        }
+
+        .hero-butterfly-center {
+            width: 250px; height: auto; position: absolute;
+            z-index: 1; opacity: 0.6;
+        }
+        
+        .hero-logo-center {
+            width: 300px; height: auto; z-index: 2; position: relative;
+        }
+
+        /* INTENTION SECTION */
+        .intention-section {
+            padding: 120px 0; background-color: transparent; 
+            position: relative; overflow: hidden; z-index: 5;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .intention-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .intention-title { font-family: var(--font-head); font-size: 3rem; line-height: 1.2; margin-bottom: 40px; color: var(--text-main); }
+        .intention-body { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.8; color: rgba(245, 241, 238, 0.75); border-left: 1px solid var(--accent); padding-left: 30px; }
+
+        /* VISUAL STACK - UPDATED FOR IMAGES/VIDEO */
+        .visual-stack-container { position: relative; height: 600px; width: 100%; }
+        
+        .stack-asset { 
+            position: absolute; 
+            border: 1px solid rgba(255,255,255,0.1); 
+            object-fit: cover;
+            transition: 0.5s;
+        }
+        .stack-asset:hover { border-color: var(--accent); z-index: 10 !important; transform: scale(1.02); }
+
+        .stack-img-1 { top: 0; right: 0; width: 60%; height: 80%; z-index: 1; }
+        .stack-video { bottom: 50px; left: 0; width: 65%; height: 40%; z-index: 3; }
+        .stack-img-2 { top: 100px; left: 10%; width: 40%; height: 40%; z-index: 2; }
+        .stack-img-3 { bottom: 0; right: 10%; width: 35%; height: 35%; z-index: 4; }
+
+        /* CLARITY SECTION */
+        .clarity-section {
+            padding: 120px 0; position: relative; overflow: hidden; z-index: 5;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .clarity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .visual-stack-clarity { position: relative; height: 650px; width: 100%; }
+
+        .clarity-asset { 
+            position: absolute; object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.1); 
+            transition: 0.4s; 
+        }
+        .clarity-asset:hover { border-color: var(--accent); z-index: 20 !important; transform: scale(1.02); }
+
+        .c-img-1 { top: 50px; left: 0; width: 55%; height: 65%; z-index: 1; }
+        .c-img-2 { top: 0; right: 5%; width: 50%; height: 40%; z-index: 2; }
+        .c-img-3 { bottom: 50px; right: 0; width: 55%; height: 50%; z-index: 3; }
+        .c-img-4 { top: 45%; left: 35%; width: 35%; height: 25%; z-index: 4; border-color: var(--accent); }
+
+        .clarity-content { padding-left: 20px; }
+        .clarity-title { font-family: var(--font-head); font-size: 3rem; line-height: 1.2; margin-bottom: 40px; color: var(--text-main); }
+        .clarity-body { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.8; color: rgba(245, 241, 238, 0.75); border-left: 1px solid var(--accent); padding-left: 30px; }
+        
+        /* OUR ROLE SECTION */
+        .role-section {
+            padding: 120px 0; position: relative; overflow: hidden; z-index: 5;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .role-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .role-content { padding-right: 20px; }
+        .role-title { font-family: var(--font-head); font-size: 3rem; line-height: 1.2; margin-bottom: 40px; color: var(--text-main); }
+        .role-body { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.8; color: rgba(245, 241, 238, 0.75); border-left: 1px solid var(--accent); padding-left: 30px; }
+        
+        .role-visual-container { position: relative; height: 600px; width: 100%; display: flex; align-items: center; justify-content: center; }
+        .role-img-main { 
+            width: 80%; height: 90%; object-fit: cover;
+            border: 1px solid rgba(255,255,255,0.1); 
+            transition: 0.4s; 
+        }
+        .role-img-main:hover { border-color: var(--accent); }
+
+        /* WHAT WE DO SECTION */
+        .what-we-do-section {
+            padding: 120px 0; position: relative; overflow: hidden; z-index: 5;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .what-we-do-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .what-we-do-visual { position: relative; height: 500px; width: 100%; display: flex; flex-direction: column; justify-content: space-between; }
+        
+        .wwd-visual-item { 
+            width: 100%; height: 23%; 
+            position: relative; overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+        .wwd-visual-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.3s; }
+        .wwd-visual-item:hover { border-color: var(--accent); transform: translateX(10px); }
+        .wwd-visual-item:hover img { opacity: 1; }
+
+        .wwd-content { padding-left: 20px; }
+        .wwd-title { font-family: var(--font-head); font-size: 3rem; line-height: 1.2; margin-bottom: 40px; color: var(--text-main); }
+        .wwd-body { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.8; color: rgba(245, 241, 238, 0.75); border-left: 1px solid var(--accent); padding-left: 30px; }
+        .wwd-list { margin-top: 30px; list-style: none; }
+        .wwd-list li { position: relative; padding-left: 20px; margin-bottom: 15px; font-size: 0.95rem; color: rgba(245, 241, 238, 0.85); }
+        .wwd-list li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
+
+        /* METHODOLOGY SECTION */
+        .methodology-text-section { padding: 120px 0; background: transparent; border-bottom: 1px solid var(--border-light); }
+        .section-header-center { text-align: center; max-width: 800px; margin: 0 auto 80px auto; }
+        .section-header-center .mono-label { justify-content: center; border: none; padding: 0; }
+        .section-header-center h2 { font-family: var(--font-head); font-size: 3.5rem; margin-bottom: 20px; color: var(--text-main); }
+        .section-header-center p { font-family: var(--font-body); color: rgba(245, 241, 238, 0.7); font-size: 1rem; }
+
+        .pipeline-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 60px; max-width: 1000px; margin: 0 auto; }
+        .pipeline-item { padding: 40px 30px; border: 1px solid rgba(255,255,255,0.05); background: rgba(255, 255, 255, 0.01); transition: 0.3s; position: relative; }
+        .pipeline-item:hover { border-color: var(--accent); background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%); transform: translateY(-5px); }
+        .pipeline-item h3 { font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 10px; color: var(--text-main); }
+        .pipeline-sub { font-family: var(--font-body); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 25px; display: block; opacity: 0.8; }
+        .pipeline-item p { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.7; color: rgba(245, 241, 238, 0.7); margin-bottom: 20px; }
+        .method-list { list-style: none; margin-bottom: 20px; padding-left: 10px; }
+        .method-list li { position: relative; padding-left: 20px; margin-bottom: 8px; font-size: 0.9rem; color: rgba(245, 241, 238, 0.6); }
+        .method-list li::before { content: '-'; position: absolute; left: 0; color: var(--accent); }
+        .method-conclusion { font-style: italic; opacity: 0.5; font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; }
+
+        /* CLOSING SECTION */
+        .closing-section { padding: 150px 0; background: transparent; text-align: center; border-bottom: 1px solid var(--border-light); position: relative; }
+        .closing-container { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+        .closing-headline { font-family: var(--font-head); font-size: 2.5rem; color: var(--text-main); margin-bottom: 40px; letter-spacing: 1px; }
+        .closing-body { font-family: var(--font-body); font-size: 1rem; line-height: 2; color: rgba(245, 241, 238, 0.8); margin-bottom: 60px; }
+
+        .closing-art-logo { width: 300px; height: auto; margin: 0 auto 50px auto; opacity: 0.5; transition: 0.4s; }
+        .closing-art-logo:hover { opacity: 1; transform: scale(1.02); }
+
+        .closing-footer-text { font-family: var(--font-head); font-size: 2rem; color: var(--text-main); margin-bottom: 10px; }
+        .closing-sub-text { font-family: var(--font-body); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 3px; color: rgba(245, 241, 238, 0.5); }
+
+        /* FOUNDERS */
+        .founder-photo { height: 400px; background-color: rgba(255,255,255,0.03); margin-bottom: 25px; border-radius: 2px; border: 1px solid var(--border-light); } 
+        .founder-role { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 5px; opacity: 0.8; }
+        .founder-name { font-size: 1.5rem; margin-bottom: 10px; }
+        
+        .founder-info p {
+            font-family: var(--font-body);
+            font-size: 0.95rem;          
+            line-height: 1.8;            
+            color: rgba(245, 241, 238, 0.75); 
+            margin-top: 15px;            
+        }
+
+        /* CTA */
+        .cta-box { 
+            text-align: center; 
+            border: 1px solid var(--border-light); 
+            padding: 100px 40px; margin-top: 40px; 
+            background: linear-gradient(180deg, rgba(255,255,255,0.01) 0%, rgba(255,255,255,0) 100%);
+            border-radius: 4px;
+        }
+        .btn { 
+            display: inline-block; margin-top: 40px; 
+            padding: 18px 45px; 
+            background: var(--text-main); 
+            color: var(--text-dark); 
+            font-weight: 600; text-transform: uppercase; letter-spacing: 2px; 
+            font-size: 0.8rem; border-radius: 50px; transition: 0.3s;
+        }
+        .btn:hover { background: #ffffff; transform: translateY(-3px); box-shadow: 0 0 20px rgba(255,255,255,0.15); }
+
+        /* FOOTER */
+        footer { padding: 80px 0 40px; background: #030712; color: var(--text-main); border-top: 1px solid var(--border-light); }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 80px; }
+        .footer-brand h2 { display: none; } 
+        .footer-brand p { font-size: 0.9rem; color: rgba(245, 241, 238, 0.4); max-width: 300px; }
+        .footer-links h4 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; opacity: 0.4; }
+        .footer-contact-item { display: flex; align-items: center; gap: 12px; margin-bottom: 15px; color: rgba(245, 241, 238, 0.5); font-size: 0.9rem; transition: 0.3s; }
+        .footer-contact-item:hover { color: var(--text-main); transform: translateX(5px); }
+        .footer-bottom { padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.75rem; display: flex; justify-content: space-between; opacity: 0.3; letter-spacing: 1px; text-transform: uppercase; }
+
+        /* NAVBAR - UPDATED TO OVERLAY/BLEND WITH BANNER */
+        nav { 
+            padding: 30px 40px; 
+            display: flex; justify-content: space-between; align-items: center; 
+            /* Perubahan: Position Absolute agar menumpang di atas banner */
+            position: absolute; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            /* Perubahan: Background transparan total */
+            background: transparent; 
+            /* Perubahan: Hapus blur untuk kejernihan maksimal */
+            backdrop-filter: none;
+            z-index: 1000; 
+            /* Perubahan: Hapus border bawah agar tidak ada pemisah */
+            border-bottom: none; 
+        }
+        .logo { display: block; } 
+        .nav-links { display: flex; gap: 40px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; list-style: none; font-weight: 500;}
+        .nav-links a:hover { opacity: 0.8; color: var(--accent); }
+        .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; color: var(--text-main); }
+        .hero { min-height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 60px; position: relative; overflow: hidden; }
+        .hero-center { max-width: 850px; margin: 0 auto; position: relative; z-index: 5; }
+        .hero-title { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; text-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        .hero-title span { font-style: italic; opacity: 0.6; }
+        .hero-sub-center { max-width: 650px; margin: 0 auto; font-size: 1.1rem; color: rgba(245, 241, 238, 0.7); }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.8rem; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 50px; }
+            .container { padding: 0 25px; }
+            .hero { padding-top: 100px; padding-bottom: 60px; min-height: auto;}
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+
+            .menu-toggle { display: block; }
+            .nav-links { display: none; position: absolute; top: 100%; left: 0; width: 100%; background-color: #030712; flex-direction: column; align-items: center; padding: 40px 0; border-bottom: 1px solid var(--border-light); gap: 20px; z-index: 999; }
+            .nav-links.active { display: flex; }
+            
+            .intention-grid, .clarity-grid, .role-grid, .what-we-do-grid { grid-template-columns: 1fr; gap: 60px; }
+            .visual-stack-container, .visual-stack-clarity, .role-visual-container, .what-we-do-visual { height: 400px; margin-top: 40px; }
+            
+            .clarity-grid .visual-stack-clarity { order: 2; }
+            .clarity-grid .clarity-content { order: 1; }
+            .what-we-do-visual { order: 2; }
+            .wwd-content { order: 1; }
+            
+            .intention-title, .clarity-title, .role-title, .wwd-title { font-size: 2.2rem; }
+            .section-header-center h2 { font-size: 2.5rem; }
+            .pipeline-grid { grid-template-columns: 1fr; gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <!-- FIXED: Replaced text logo with image placeholder -->
+        <a href="#" class="logo">
+            <img src="assets/logo-header.png" alt="Estetio" style="height: 28px; width: auto;">
+        </a>
+
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="ph ph-list"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#belief" onclick="toggleMenu()">The Belief</a></li>
+            <li><a href="#role" onclick="toggleMenu()">Our Role</a></li>
+            <li><a href="#what-we-do" onclick="toggleMenu()">What We Do</a></li>
+            <li><a href="#methodology" onclick="toggleMenu()">Methodology</a></li>
+            <li><a href="#architects" onclick="toggleMenu()">Team</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <!-- FIXED: Replaced placeholders with img tags pointing to assets folder -->
+        <img src="assets/hero-bg.jpg" class="hero-bg-img" alt="Background">
+        
+        <div class="container hero-center">
+            
+            <span class="mono-label" style="border: none; padding: 0; margin-bottom: 15px; justify-content: center; display: flex;">Strategic Growth Partner</span>
+            <h1 class="hero-title">The Quiet Force Behind<br><span>Sustainable Growth.</span></h1>
+            <div class="hero-sub-center"><p>Estetio is the silent engine behind modern aesthetic clinics.</p></div>
+        </div>
+    </header>
+
+    <!-- INTENTION (ID Updated to match Nav) -->
+    <section class="intention-section" id="belief">
+        <div class="container intention-grid">
+            <div class="intention-content">
+                <h2 class="intention-title">
+                    Build Growth<br>
+                    <span style="font-style: italic; opacity: 0.6;">With Intention.</span>
+                </h2>
+                
+                <div class="intention-body">
+                    <p style="margin-bottom: 25px; color: var(--text-main);">Estetio was founded on a simple belief:</p>
+                    
+                    <p>Sustainable clinic growth never happens by accident.<br>
+                    It is shaped by clear understanding,<br>
+                    intentional decisions,<br>
+                    and systems built to last.</p>
+                    
+                    <br>
+                    
+                    <p>Not by the loudest campaigns.<br>
+                    Not by short-term tactics.<br>
+                    But by growth designed with purpose.</p>
+                </div>
+            </div>
+
+            <!-- RIGHT: VISUAL STACK (3 IMG + 1 VIDEO) -->
+            <!-- FIXED: Updated divs to img and video tags -->
+            <div class="visual-stack-container">
+                <img src="assets/intention-1.jpg" class="stack-asset stack-img-1" alt="Visual 1">
+                <img src="assets/intention-2.jpg" class="stack-asset stack-img-2" alt="Visual 2">
+                
+                <div class="stack-asset stack-video" style="border: none; overflow: hidden; padding: 0;">
+                    <video autoplay muted loop playsinline style="width: 100%; height: 100%; object-fit: cover;">
+                        <source src="assets/intention-video.mp4" type="video/mp4">
+                    </video>
+                </div>
+                
+                <img src="assets/intention-3.jpg" class="stack-asset stack-img-3" alt="Visual 3">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEW SECTION: CLARITY -->
+    <section class="clarity-section">
+        <div class="container clarity-grid">
+            
+            <!-- LEFT: VISUAL STACK (4 IMAGES) -->
+            <!-- FIXED: Updated placeholders to img tags -->
+            <div class="visual-stack-clarity">
+                <img src="assets/clarity-1.jpg" class="clarity-asset c-img-1" alt="Clarity 1">
+                <img src="assets/clarity-2.jpg" class="clarity-asset c-img-2" alt="Clarity 2">
+                <img src="assets/clarity-3.jpg" class="clarity-asset c-img-3" alt="Clarity 3">
+                <img src="assets/clarity-4.jpg" class="clarity-asset c-img-4" alt="Clarity 4">
+            </div>
+
+            <!-- RIGHT: CONTENT -->
+            <div class="clarity-content">
+                <h2 class="clarity-title">
+                    Growth Start<br>
+                    <span style="font-style: italic; opacity: 0.6;">With Clarity.</span>
+                </h2>
+                
+                <div class="clarity-body">
+                    <p style="margin-bottom: 25px; font-weight: 500; color: var(--text-main);">Growth does not begin with execution.<br>It begins with understanding.</p>
+                    
+                    <p>Every clinic operates within its own reality —<br>
+                    its market, its audience, its limitations, and its potential.</p>
+                    
+                    <br>
+                    
+                    <p>Without proper diagnosis,<br>
+                    strategy becomes assumption.<br>
+                    And execution becomes noise.</p>
+                    
+                    <br>
+                    
+                    <p style="color: var(--accent);">Estetio exists to bring clarity<br>
+                    before complexity.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEW SECTION: OUR ROLE (Added ID) -->
+    <section class="role-section" id="role">
+        <div class="container role-grid">
+            
+            <!-- LEFT: CONTENT -->
+            <div class="role-content">
+                <span class="mono-label" style="border: none; padding: 0; margin-bottom: 20px;">OUR ROLE</span>
+                <h2 class="role-title">
+                    The Quiet Force<br>
+                    <span style="font-style: italic; opacity: 0.6;">Behind Clinic Growth.</span>
+                </h2>
+                
+                <div class="role-body">
+                    <p style="margin-bottom: 25px; color: var(--text-main);">Estetio doesn’t exist to take the spotlight.<br>We exist to guide what happens behind it.</p>
+                    
+                    <p>We are not clinic operators.<br>
+                    We are trusted strategic partners —<br>
+                    bringing objectivity, clarity, and structure from the outside.</p>
+                    
+                    <br>
+                    
+                    <p>Like a quiet force,<br>
+                    we observe carefully,<br>
+                    advise honestly,<br>
+                    and design systems that allow clinics to grow with confidence.</p>
+                </div>
+            </div>
+
+            <!-- RIGHT: VISUAL PLACEHOLDER -->
+            <!-- FIXED: Updated to img tag -->
+            <div class="role-visual-container">
+                <img src="assets/role-main.jpg" class="role-img-main" alt="Our Role Visual">
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEW SECTION: WHAT WE DO (Added ID) -->
+    <section class="what-we-do-section" id="what-we-do">
+        <div class="container what-we-do-grid">
+            
+            <!-- LEFT: VISUAL (Structured List/Grid Placeholder) -->
+            <!-- FIXED: Added img tags inside the items -->
+            <div class="what-we-do-visual">
+                <div class="wwd-visual-item">
+                    <img src="assets/wwd-diagnosis.jpg" alt="Diagnosis">
+                </div>
+                <div class="wwd-visual-item">
+                    <img src="assets/wwd-strategy.jpg" alt="Strategy">
+                </div>
+                <div class="wwd-visual-item">
+                    <img src="assets/wwd-system.jpg" alt="System Design">
+                </div>
+                <div class="wwd-visual-item">
+                    <img src="assets/wwd-execution.jpg" alt="Execution">
+                </div>
+            </div>
+
+            <!-- RIGHT: CONTENT -->
+            <div class="wwd-content">
+                <span class="mono-label" style="border: none; padding: 0; margin-bottom: 20px;">WHAT WE DO</span>
+                <h2 class="wwd-title">
+                    From Clarity<br>
+                    <span style="font-style: italic; opacity: 0.6;">To Execution.</span>
+                </h2>
+                
+                <div class="wwd-body">
+                    <p style="margin-bottom: 20px; color: var(--text-main); font-weight: 500;">Estetio works across the full spectrum of clinic growth:</p>
+                    
+                    <ul class="wwd-list">
+                        <li>Business and growth diagnosis.</li>
+                        <li>Strategic direction and decision-making.</li>
+                        <li>System design across marketing, digital, and customer experience.</li>
+                        <li>Structured execution with long-term sustainability in mind.</li>
+                    </ul>
+                    
+                    <br>
+                    
+                    <p style="color: var(--accent);">Every action is rooted in insight.<br>
+                    Every system is built for continuity.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NEW SECTION: OUR METHODOLOGY (TEXT ONLY - REVISED CONTENT) -->
+    <section class="methodology-text-section" id="methodology">
+        <div class="container">
+            <div class="section-header-center">
+                <span class="mono-label">OUR METHODOLOGY</span>
+                <h2>A Structured Approach to Growth.</h2>
+                <p>Growth requires order before acceleration. Our methodology follows a clear, intentional flow:</p>
+            </div>
+            
+            <div class="pipeline-grid">
+                <!-- Item 1: Diagnosis -->
+                <div class="pipeline-item">
+                    <h3>Diagnosis</h3>
+                    <span class="pipeline-sub">Understanding before action</span>
+                    
+                    <p>We audit and assess existing conditions across:</p>
+                    <ul class="method-list">
+                        <li>Marketing</li>
+                        <li>Branding & creative</li>
+                        <li>Digital channels</li>
+                        <li>Customer experience and funnel performance</li>
+                    </ul>
+                    
+                    <div class="method-conclusion">This stage reveals what truly works, what doesn’t, and why.</div>
+                </div>
+                
+                <!-- Item 2: Strategic Blueprint -->
+                <div class="pipeline-item">
+                    <h3>Strategic Blueprint</h3>
+                    <span class="pipeline-sub">Direction before design</span>
+                    
+                    <p>Based on insight, we define:</p>
+                    <ul class="method-list">
+                        <li>Growth priorities</li>
+                        <li>Strategic focus areas</li>
+                        <li>Clear roles for each discipline</li>
+                    </ul>
+                    
+                    <div class="method-conclusion">This blueprint becomes the foundation for every decision that follows.</div>
+                </div>
+                
+                <!-- Item 3: System Design -->
+                <div class="pipeline-item">
+                    <h3>System Design</h3>
+                    <span class="pipeline-sub">Structure before scale</span>
+                    
+                    <p>We design integrated systems across:</p>
+                    <ul class="method-list">
+                        <li>Marketing</li>
+                        <li>Digital</li>
+                        <li>Customer experience</li>
+                    </ul>
+                    
+                    <div class="method-conclusion">Each system is built to support the others — not compete with them.</div>
+                </div>
+
+                <!-- Item 4: Execution -->
+                <div class="pipeline-item">
+                    <h3>Execution</h3>
+                    <span class="pipeline-sub">Action with intention</span>
+                    
+                    <p>Execution is never random. It is structured, measured, and aligned with the blueprint.</p>
+                    
+                    <div class="method-conclusion" style="opacity: 0.8; font-style: italic;">Every output serves the system.<br>Every effort supports sustainable growth.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTS -->
+    <section id="architects" class="section">
+        <div class="container">
+            <span class="mono-label" style="border: none; padding: 0;">THE ARCHITECTS</span>
+            <h2 style="font-size: 3rem; margin-bottom: 60px;">The Trifecta.</h2>
+            <div class="grid-3">
+                <div class="founder-card">
+                    <!-- FIXED: Updated path -->
+                    <div class="img-placeholder founder-photo"><img src="assets/founder-aditya.jpg" alt="Aditya Warman" onerror="this.style.display='none'; this.parentElement.innerHTML='<br>Aditya Warman<br>System Architect'"></div>
+                    <div class="founder-info">
+                        <div class="founder-role">CX Strategist & System Architect</div>
+                        <h3 class="founder-name">Aditya Warman.</h3>
+                        <p>Specializes in architecting seamless customer experiences that drive sustainable retention. He transforms complex operations into structured customer journeys—ensuring that as clinics scale, service consistency and care quality remain the core drivers of growth.</p>
+                    </div>
+                </div>
+                <div class="founder-card">
+                    <!-- FIXED: Updated path -->
+                    <div class="img-placeholder founder-photo"><img src="assets/founder-chandra.jpg" alt="Chandra Aghestza" onerror="this.style.display='none'; this.parentElement.innerHTML='<br>Chandra Aghestza<br>Creative Director'"></div>
+                    <div class="founder-info">
+                        <div class="founder-role">Marketing & Creative Director</div>
+                        <h3 class="founder-name">Chandra Aghestza.</h3>
+                        <p>Brings over ten years of experience across FMCG, technology, and beauty industries, aligning strategic thinking with creative execution. He positions creativity as a strategic asset designed to build relevance and conversion, ensuring marketing efforts deliver measurable business impact.</p>
+                    </div>
+                </div>
+                <div class="founder-card">
+                    <!-- FIXED: Updated path -->
+                    <div class="img-placeholder founder-photo"><img src="assets/founder-refael.jpg" alt="Refael Fernando" onerror="this.style.display='none'; this.parentElement.innerHTML='<br>Refael Fernando<br>Acquisition Lead'"></div>
+                    <div class="founder-info">
+                        <div class="founder-role">Digital & Acquisition</div>
+                        <h3 class="founder-name">Refael Fernando.</h3>
+                        <p>A digital growth specialist who leverages his background as a data analyst to drive performance-based strategy. He translates analytical insights into actionable acquisition initiatives, ensuring digital execution remains aligned with data, efficiency, and long-term scalability.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW CLOSING SECTION (ADDED) -->
+    <section class="closing-section">
+        <div class="container closing-container">
+            <h2 class="closing-headline">Insight. System. Growth.</h2>
+            
+            <div class="closing-body">
+                Estetio is not here to promise instant results.<br>
+                We are here to build foundations that last.<br>
+                <br>
+                Quietly.<br>
+                Thoughtfully.<br>
+                And with purpose.
+            </div>
+
+            <!-- Placeholder for Estetio Logo Art -->
+            <!-- FIXED: Updated to img tag -->
+            <img src="assets/art-logo.png" class="closing-art-logo" alt="Estetio Art Logo">
+
+            <div class="closing-footer-text">ESTETIO</div>
+            <div class="closing-sub-text">The Quiet Force Behind Clinic Growth</div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="border-bottom: none;">
+        <div class="container">
+            <div class="cta-box">
+                <i class="ph-thin ph-fingerprint" style="font-size: 3rem; margin-bottom: 20px;"></i>
+                <h2 style="font-size: 2.5rem;">Access The Protocol.</h2>
+                <p style="max-width: 600px; margin: 20px auto; opacity: 0.7;">We operate with intentional focus. Contact us to initiate a <strong>Strategic Diagnostic Audit</strong> for your clinic.</p>
+                <a href="https://wa.me/6281210704448" target="_blank" class="btn">Initiate Diagnostic Call</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- FIXED: Replaced text logo with img tag placeholder -->
+                <div class="footer-brand">
+                    <img src="assets/logo-footer.png" alt="Estetio Logo" style="height: 35px; margin-bottom: 20px;">
+                    <p>The quiet force behind clinic growth. Engineering dominance through data, technology, and superior strategy.</p>
+                </div>
+                
+                <div class="footer-links"><h4>Connected</h4><a href="https://instagram.com/estetiogrowth" target="_blank" class="footer-contact-item"><i class="ph ph-instagram-logo"></i> @estetiogrowth</a><a href="https://linkedin.com/in/estetiogrowth" target="_blank" class="footer-contact-item"><i class="ph ph-linkedin-logo"></i> estetiogrowth</a></div>
+                <div class="footer-links"><h4>Contact</h4><a href="https://wa.me/6281210704448" target="_blank" class="footer-contact-item"><i class="ph ph-whatsapp-logo"></i> 0812-1070-4448</a><a href="mailto:info@estetio.com" class="footer-contact-item"><i class="ph ph-envelope-simple"></i> info@estetio.com</a></div>
+            </div>
+            <div class="footer-bottom"><div>&copy; 2026 ESTETIO INTELLIGENCE GROUP.</div><div>JAKARTA — INDONESIA</div></div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
